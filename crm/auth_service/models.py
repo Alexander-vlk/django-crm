@@ -1,3 +1,4 @@
+from django.contrib import admin
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
@@ -13,3 +14,7 @@ class User(AbstractUser):
 
     def __str__(self):
         return f'{self.last_name} {self.first_name} {self.second_name}'
+
+    @admin.display(description='ФИО')
+    def get_full_name(self) -> str:
+        return f'{super().get_full_name()} {self.second_name}'
