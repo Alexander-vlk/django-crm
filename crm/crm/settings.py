@@ -1,11 +1,14 @@
+import environ
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+env = environ.Env(DEBUG=(bool, True))
+env.read_env('.env')
 
-SECRET_KEY = 'django-insecure-q-xecteynfc+y#ard#4^rp5vv&_=^al(4ad-16u7nznmy_qlly'
+SECRET_KEY = env('SECRET_KEY')
 
-DEBUG = True
+DEBUG = env('DEBUG')
 
 ALLOWED_HOSTS = []
 
@@ -70,7 +73,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = env('LANGUAGE_CODE')
 
 TIME_ZONE = 'UTC'
 
