@@ -78,6 +78,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTH_USER_MODEL = 'auth_service.User'
+
 LANGUAGE_CODE = env('LANGUAGE_CODE')
 
 TIME_ZONE = 'UTC'
