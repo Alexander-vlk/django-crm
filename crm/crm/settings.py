@@ -22,6 +22,7 @@ INSTALLED_APPS = [
     'auth_service.apps.AuthServiceConfig',
     'tailwind',
     'theme',
+    'app.apps.AppConfig',
 ]
 
 MIDDLEWARE = [

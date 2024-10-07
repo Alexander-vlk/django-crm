@@ -8,6 +8,7 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('auth/', include('auth_service.urls')),
+    path('', include('app.urls')),
 ]
 
 if settings.DEBUG:
