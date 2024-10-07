@@ -22,6 +22,7 @@ INSTALLED_APPS = [
     'auth_service.apps.AuthServiceConfig',
     'tailwind',
     'theme',
+    'django_browser_reload',
     'app.apps.AppConfig',
 ]
 
@@ -33,6 +34,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "django_browser_reload.middleware.BrowserReloadMiddleware",
 ]
 
 ROOT_URLCONF = 'crm.urls'
