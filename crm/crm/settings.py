@@ -20,6 +20,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'auth_service.apps.AuthServiceConfig',
+    'tailwind',
+    'theme',
 ]
 
 MIDDLEWARE = [
@@ -94,3 +96,7 @@ MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'uploads/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+TAILWIND_APP_NAME = 'theme'
+
+NPM_BIN_PATH = "C:/Program Files/nodejs/npm.cmd"
