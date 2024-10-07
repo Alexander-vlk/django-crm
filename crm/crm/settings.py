@@ -19,6 +19,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'auth_service.apps.AuthServiceConfig',
 ]
 
 MIDDLEWARE = [
@@ -76,6 +77,8 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+AUTH_USER_MODEL = 'auth_service.User'
 
 LANGUAGE_CODE = env('LANGUAGE_CODE')
 
