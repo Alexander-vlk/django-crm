@@ -1,10 +1,15 @@
 from django.contrib import admin
+from django.utils.html import format_html
 
 
 from auth_service.models import User
 
 @admin.register(User)
 class UserAdmin(admin.ModelAdmin):
+
+    def show_image(self, obj):
+        return format_html('<img src="{}" style="max-width:200px; max-height:200px"/>'.format(obj.profile_image.url))
+    
     search_fields = ['username', 'first_name', 'last_name', 'second_name', 'fiz_tin', 'email']
     list_display = [
         'id',
@@ -36,7 +41,7 @@ class UserAdmin(admin.ModelAdmin):
         (
             'Дополнительные сведения',
             {
-                'fields': ['fiz_tin', 'is_shop_owner', 'is_supplier'],
+                'fields': ['fiz_tin', 'is_shop_owner', 'is_supplier', 'profile_image', 'show_image'],
                 'description': 'Дополнительные сведения',
             }
         ),
@@ -47,4 +52,4 @@ class UserAdmin(admin.ModelAdmin):
             }
         )
     ]
-    readonly_fields = ['password', 'date_joined', 'last_login']
+    readonly_fields = ['password', 'date_joined', 'last_login', 'show_image']

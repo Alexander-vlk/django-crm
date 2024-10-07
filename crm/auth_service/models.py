@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.conf import settings
 
 
 class User(AbstractUser):
@@ -8,6 +9,13 @@ class User(AbstractUser):
     phone_number = models.CharField(max_length=20, default='', verbose_name='Номер телефона')
 
     fiz_tin = models.CharField(max_length=12, default='', verbose_name='ИНН')
+
+    profile_image = models.ImageField(
+        upload_to=settings.MEDIA_ROOT,
+        null=True,
+        blank=True,
+        verbose_name='Фото профиля'
+        )
 
     is_shop_owner = models.BooleanField(default=False, verbose_name='Владелец магазина')
     is_supplier = models.BooleanField(default=False, verbose_name='Поставщик')
