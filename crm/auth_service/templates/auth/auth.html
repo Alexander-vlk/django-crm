@@ -6,7 +6,7 @@
 
 {% block content %}
 <section>
-    <form action="" method='POST'>
+    <form action="{% url 'auth_service:login' %}" method='POST'>
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Войти</button>

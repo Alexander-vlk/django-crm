@@ -1,10 +1,11 @@
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render
 from django.urls import reverse_lazy, reverse
-from django.views.decorators.http import require_POST
-from django.contrib.auth import logout
+from django.views.decorators.http import require_POST, require_http_methods
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.views import LoginView
+from django.views.generic.edit import CreateView
 
-from auth_service.forms import UserLoginForm
+from auth_service.forms import UserLoginForm, UserRegisterForm
 
 
 class UserLoginView(LoginView):
@@ -15,9 +16,19 @@ class UserLoginView(LoginView):
     next_page = reverse_lazy('app:index')
 
 
-# @require_http_methods(['GET', 'POST'])
-# def register(request):
-#     template_name = 'auth/auth.html'
+class UserRegisterView(CreateView):
+    form_class = UserRegisterForm
+
+    template_name = 'auth/auth.html'
+
+    success_url = reverse_lazy('app:index')
+    
+    def form_valid(self, form):
+        user = form.save()
+
+        login(self.request, user)
+        return super().form_valid(form)
+    
 
 
 @require_POST
