@@ -26,3 +26,4 @@ class User(AbstractUser):
     @admin.display(description='ФИО')
     def get_full_name(self) -> str:
         return f'{super().get_full_name()} {self.second_name}'
+    

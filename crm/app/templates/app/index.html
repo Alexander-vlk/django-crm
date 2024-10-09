@@ -22,7 +22,7 @@
             </div>
             <div class="w-full mt-3 text-2xl lg:text-lg">
                 <a
-                href=""
+                href="{% url 'auth_service:login' %}"
                 class="w-full bg-gray-200 p-3 rounded-sm shadow-sm mr-2 hover:bg-slate-400 hover:text-white duration-75"
                 >
                 Log in
@@ -33,6 +33,12 @@
                 >
                 Register
                 </a>
+                {% if request.user.is_authenticated %}
+                <form action="{% url 'auth_service:logout' %}" method='POST'>
+                    {% csrf_token %}
+                    <button type="submit">Выйти</button>
+                </form>
+                {% endif %}
             </div>
         </div>
     </section>  
