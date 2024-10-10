@@ -100,10 +100,10 @@ class UserRegisterForm(forms.ModelForm):
                     'placeholder': 'ИНН физ. лица',
                 }
             ),
-            'is_shop_owner': forms.CheckboxInput(
+            'is_shop_employee': forms.CheckboxInput(
                 attrs={
                     'class': '',
-                    'name': 'is_shop_owner',
+                    'name': 'is_shop_employee',
                 }
             ),
             'is_supplier': forms.CheckboxInput(
@@ -111,7 +111,7 @@ class UserRegisterForm(forms.ModelForm):
                     'class': '',
                     'name': 'is_supplier',
                 }
-            )
+            ),
         }
 
     def clean(self):
