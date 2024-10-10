@@ -1,6 +1,7 @@
-from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth.forms import UserCreationForm
 from django import forms
+from django.contrib.auth.validators import UnicodeUsernameValidator
+from django.contrib.auth.forms import AuthenticationForm
+
 
 from auth_service.models import User
 
@@ -36,9 +37,10 @@ class UserRegisterForm(forms.ModelForm):
                 }
             ),
         label='ФИО',
-        
+        validators=[UnicodeUsernameValidator]
         )
     password_1 = forms.CharField(
+        min_length=8,
         max_length=50,
         widget=forms.PasswordInput(
              attrs={
@@ -49,6 +51,7 @@ class UserRegisterForm(forms.ModelForm):
             label='Пароль',
         )
     password_2 = forms.CharField(
+        min_length=8,
         max_length=50,
         widget=forms.PasswordInput(
              attrs={
