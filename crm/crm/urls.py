@@ -9,6 +9,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('auth_service/', include('auth_service.urls')),
     path('', include('app.urls')),
+    path('dashboard/', include('dashboard.urls')),
     path("__reload__/", include("django_browser_reload.urls")),
 ] + debug_toolbar_urls()
 
