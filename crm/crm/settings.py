@@ -20,10 +20,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'auth_service.apps.AuthServiceConfig',
+    'app.apps.AppConfig',
     'tailwind',
     'theme',
     'django_browser_reload',
-    'app.apps.AppConfig',
+    'debug_toolbar',
 ]
 
 MIDDLEWARE = [
@@ -31,6 +32,7 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -67,6 +69,17 @@ DATABASES = {
         'PORT': env('DATABASE_PORT'),
     }
 }
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'LOCATION': 'unique-snowflake',
+    }
+}
+
+INTERNAL_IPS = [
+    '127.0.0.1',
+]
 
 AUTH_PASSWORD_VALIDATORS = [
     {
