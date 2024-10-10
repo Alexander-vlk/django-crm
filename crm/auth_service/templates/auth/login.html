@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block title %}
+{{ form_type }}
+{% endblock title %}
+
+{% block content %}
+<section class="w-full">
+    <div class="w-full lg:w-1/3 mx-auto my-6 pr-0 lg:pr-2">
+        <div class="leading-loose">
+            <form class="p-10 bg-white rounded shadow-xl" action="{% url 'auth_service:login' %}" method='POST'>
+                {% csrf_token %}
+                <div class="">
+                    <label class="block text-sm text-gray-600" for="username">Имя пользователя</label>
+                    {{ form.username }}
+                </div>
+                <div class="mt-2">
+                    <label class="block text-sm text-gray-600" for="password">Пароль</label>
+                    {{ form.password }}
+                </div>
+                <div class="">
+                    {% if form.errors %}
+                        {% for field, errors in form.errors.items %}
+                            <div
+                            class="bg-red-600 rounded"
+                            >
+                                <p
+                                class='my-2 text-white p-2'
+                                >
+                                    {{ errors|join:", " }}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="mt-2">
+                    <p
+                        class='text'
+                    >
+                        Нет аккаунта?
+                        <a
+                        class='text-blue-600 hover:underline'
+                        href="{% url 'auth_service:register' %}"
+                        >
+                            Зарегистрироваться
+                        </a>
+                    </p>
+                    
+                </div>
+                <div class="mt-6 flex align-center">
+                    <button 
+                        class="px-4 py-1 text-white font-light tracking-wider bg-blue-800 rounded hover:bg-blue-600" 
+                        type="submit"
+                        >
+                        Войти
+                    </button>
+                    <a
+                        class="py-1 mx-4 text-blue-600 hover:underline"
+                        href=""
+                        >
+                        Забыли пароль?
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock content %}

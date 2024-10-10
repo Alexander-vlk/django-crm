@@ -7,7 +7,7 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('auth/', include('auth_service.urls')),
+    path('auth_service/', include('auth_service.urls')),
     path('', include('app.urls')),
     path("__reload__/", include("django_browser_reload.urls")),
 ]

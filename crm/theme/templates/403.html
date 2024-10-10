@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}
+    403
+{% endblock title %}
+
+{% block content %}
+
+<div class="container mx-auto">
+    <section 
+    class="flex items-center justify-center h-screen"
+    >
+    <div class="">
+        <h1
+            class='text-5xl'
+        >
+            Вас тут быть не должно
+        </h1>
+        <form action="{% url 'auth_service:logout' %}" method='POST' class="my-5    ">
+            {% csrf_token %}
+            <button class="px-4 py-1 text-white font-light tracking-wider bg-red-700 rounded" type="submit">Выйти</button>
+        </form>
+    </div>
+    </section>  
+</div>
+{% endblock content %}
+
