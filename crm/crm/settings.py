@@ -19,8 +19,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     'auth_service.apps.AuthServiceConfig',
     'app.apps.AppConfig',
+    'dashboard.apps.DashboardConfig',
+
     'tailwind',
     'theme',
     'django_browser_reload',
