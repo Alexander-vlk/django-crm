@@ -48,8 +48,8 @@ class UserAdmin(admin.ModelAdmin):
         (
             None,
             {
-                'fields': ['is_staff', 'is_active', 'date_joined', 'password', 'last_login']
+                'fields': ['is_staff', 'is_active', 'date_joined', 'last_login']
             }
         )
     ]
-    readonly_fields = ['password', 'date_joined', 'last_login', 'show_image']
+    readonly_fields = ['date_joined', 'last_login', 'show_image']
