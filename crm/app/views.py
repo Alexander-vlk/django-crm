@@ -6,5 +6,5 @@ class IndexPageView(UserPassesTestMixin, TemplateView):
     template_name = 'app/index.html'
 
     def test_func(self):
-        return self.request.user.is_anonymous
+        return self.request.user.is_anonymous or self.request.user.is_superuser
 

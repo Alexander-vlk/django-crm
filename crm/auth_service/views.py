@@ -18,7 +18,7 @@ class UserLoginView(UserPassesTestMixin, LoginView):
     next_page = reverse_lazy('app:index')
 
     def test_func(self):
-        return not self.request.user.is_authenticated
+        return not self.request.user.is_authenticated or self.request.user.is_superuser
 
 
 class UserRegisterView(UserPassesTestMixin, CreateView):
@@ -35,7 +35,7 @@ class UserRegisterView(UserPassesTestMixin, CreateView):
         return super().form_valid(form)  
     
     def test_func(self):
-        return not self.request.user.is_authenticated
+        return not self.request.user.is_authenticated or self.request.user.is_superuser
 
 
 @login_required
