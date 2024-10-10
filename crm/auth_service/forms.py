@@ -134,7 +134,7 @@ class UserRegisterForm(forms.ModelForm):
     def save(self, commit=True):
         obj = super().save(commit=False)
 
-        obj.password = self.cleaned_data.get('password_1')
+        obj.set_password(self.cleaned_data.get('password_1'))
 
         splitted_fio = self.cleaned_data.get('fio').split()
 

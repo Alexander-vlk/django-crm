@@ -8,6 +8,7 @@ from django.contrib.auth.mixins import UserPassesTestMixin
 from django.views.generic.edit import CreateView
 
 from auth_service.forms import UserLoginForm, UserRegisterForm
+from auth_service.models import User
 
 
 class UserLoginView(UserPassesTestMixin, LoginView):
@@ -22,11 +23,12 @@ class UserLoginView(UserPassesTestMixin, LoginView):
 
 
 class UserRegisterView(UserPassesTestMixin, CreateView):
+    model = User
     form_class = UserRegisterForm
 
     template_name = 'auth/register.html'
 
-    success_url = reverse_lazy('app:index')
+    success_url = reverse_lazy('auth_service:login')
     
     def form_valid(self, form):
         user = form.save()
