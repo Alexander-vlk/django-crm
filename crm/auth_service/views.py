@@ -15,6 +15,11 @@ class UserLoginView(LoginView):
 
     next_page = reverse_lazy('app:index')
 
+    def get_context_data(self, **kwargs) -> dict[str]:
+        context = super().get_context_data(**kwargs)
+        context['form_type'] = 'Вход'
+        return context
+
 
 class UserRegisterView(CreateView):
     form_class = UserRegisterForm
@@ -28,6 +33,11 @@ class UserRegisterView(CreateView):
 
         login(self.request, user)
         return super().form_valid(form)
+    
+    def get_context_data(self, **kwargs) -> dict[str]:
+        context = super().get_context_data(**kwargs)
+        context['form_type'] = 'Регистрация'
+        return context
     
 
 

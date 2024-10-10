@@ -14,6 +14,7 @@
                 <h1
                 class="text-5xl columns"
                 >
+                TODO:
                 Welcome to Django CRM
                 </h1>   
             </div>
@@ -34,9 +35,9 @@
                 Register
                 </a>
                 {% if request.user.is_authenticated %}
-                <form action="{% url 'auth_service:logout' %}" method='POST'>
+                <form action="{% url 'auth_service:logout' %}" method='POST' class="my-5    ">
                     {% csrf_token %}
-                    <button type="submit">Выйти</button>
+                    <button class="px-4 py-1 text-white font-light tracking-wider bg-red-700 rounded" type="submit">Выйти</button>
                 </form>
                 {% endif %}
             </div>
