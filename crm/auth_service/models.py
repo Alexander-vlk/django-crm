@@ -25,6 +25,7 @@ class User(AbstractUser):
         )
 
     is_shop_owner = models.BooleanField(default=False, verbose_name='Владелец магазина')
+    is_shop_employee = models.BooleanField(default=False, verbose_name='Сотрудник магазина')
     is_supplier = models.BooleanField(default=False, verbose_name='Поставщик')
 
     def __str__(self):
