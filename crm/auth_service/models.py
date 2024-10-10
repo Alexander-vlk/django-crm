@@ -2,16 +2,23 @@ from django.contrib import admin
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.conf import settings
+from django.core.validators import FileExtensionValidator, RegexValidator
 
 
 class User(AbstractUser):
     second_name = models.CharField(max_length=100, default='', verbose_name='Отчество')
     phone_number = models.CharField(max_length=20, default='', verbose_name='Номер телефона')
 
-    fiz_tin = models.CharField(max_length=12, default='', verbose_name='ИНН')
+    fiz_tin = models.CharField(
+        max_length=12,
+        validators=[RegexValidator(r'(\d{12})')],
+        default='',
+        verbose_name='ИНН',
+        )
 
     profile_image = models.ImageField(
         upload_to=settings.MEDIA_ROOT,
+        validators=[FileExtensionValidator(['png', 'jpg', 'jpeg'])],
         null=True,
         blank=True,
         verbose_name='Фото профиля'
