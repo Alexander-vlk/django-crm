@@ -11,20 +11,15 @@ from auth_service.forms import UserLoginForm, UserRegisterForm
 class UserLoginView(LoginView):
     authentication_form = UserLoginForm
 
-    template_name = 'auth/auth.html'
+    template_name = 'auth/login.html'
 
     next_page = reverse_lazy('app:index')
-
-    def get_context_data(self, **kwargs) -> dict[str]:
-        context = super().get_context_data(**kwargs)
-        context['form_type'] = 'Вход'
-        return context
 
 
 class UserRegisterView(CreateView):
     form_class = UserRegisterForm
 
-    template_name = 'auth/auth.html'
+    template_name = 'auth/register.html'
 
     success_url = reverse_lazy('app:index')
     
@@ -32,13 +27,7 @@ class UserRegisterView(CreateView):
         user = form.save()
 
         login(self.request, user)
-        return super().form_valid(form)
-    
-    def get_context_data(self, **kwargs) -> dict[str]:
-        context = super().get_context_data(**kwargs)
-        context['form_type'] = 'Регистрация'
-        return context
-    
+        return super().form_valid(form)  
 
 
 @require_POST

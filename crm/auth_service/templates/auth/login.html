@@ -18,6 +18,34 @@
                     <label class="block text-sm text-gray-600" for="password">Пароль</label>
                     {{ form.password }}
                 </div>
+                <div class="">
+                    {% if form.errors %}
+                        {% for field, errors in form.errors.items %}
+                            <div
+                            class="bg-red-600 rounded"
+                            >
+                                <p
+                                class='my-2 text-white p-2'
+                                >
+                                    {{ errors|join:", " }}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="mt-2">
+                    <p
+                        class='text'
+                    >
+                        Нет аккаунта?
+                        <a
+                        class='text-blue-600 hover:underline'
+                        href="{% url 'auth_service:register' %}"
+                        >
+                            Зарегистрироваться
+                        </a>
+                    </p>
+                    
+                </div>
                 <div class="mt-6 flex align-center">
                     <button 
                         class="px-4 py-1 text-white font-light tracking-wider bg-blue-800 rounded hover:bg-blue-600" 
