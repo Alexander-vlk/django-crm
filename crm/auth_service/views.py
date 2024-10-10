@@ -1,22 +1,27 @@
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect
 from django.urls import reverse_lazy, reverse
-from django.views.decorators.http import require_POST, require_http_methods
-from django.contrib.auth import authenticate, login, logout
+from django.views.decorators.http import require_POST
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import login, logout
 from django.contrib.auth.views import LoginView
+from django.contrib.auth.mixins import UserPassesTestMixin
 from django.views.generic.edit import CreateView
 
 from auth_service.forms import UserLoginForm, UserRegisterForm
 
 
-class UserLoginView(LoginView):
+class UserLoginView(UserPassesTestMixin, LoginView):
     authentication_form = UserLoginForm
 
     template_name = 'auth/login.html'
 
     next_page = reverse_lazy('app:index')
 
+    def test_func(self):
+        return not self.request.user.is_authenticated
 
-class UserRegisterView(CreateView):
+
+class UserRegisterView(UserPassesTestMixin, CreateView):
     form_class = UserRegisterForm
 
     template_name = 'auth/register.html'
@@ -28,8 +33,12 @@ class UserRegisterView(CreateView):
 
         login(self.request, user)
         return super().form_valid(form)  
+    
+    def test_func(self):
+        return not self.request.user.is_authenticated
 
 
+@login_required
 @require_POST
 def logout_user(request):
     LOGOUT_REDIRECT_URL = reverse('app:index')

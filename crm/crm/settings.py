@@ -85,7 +85,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 AUTH_USER_MODEL = 'auth_service.User'
 
-# LOGIN_URL = 'auth/login/'
+LOGIN_URL = 'auth_service/login/'
 
 LANGUAGE_CODE = env('LANGUAGE_CODE')
 

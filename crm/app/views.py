@@ -1,7 +1,10 @@
-from django.shortcuts import render
+from django.views.generic.base import TemplateView
+from django.contrib.auth.mixins import UserPassesTestMixin
 
 
-def index(request):
+class IndexPageView(UserPassesTestMixin, TemplateView):
     template_name = 'app/index.html'
-    context = {}
-    return render(request, template_name, context)
+
+    def test_func(self):
+        return self.request.user.is_anonymous
+
