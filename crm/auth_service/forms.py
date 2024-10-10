@@ -72,6 +72,8 @@ class UserRegisterForm(forms.ModelForm):
             'fiz_tin',
             'password_1',
             'password_2',
+            'is_shop_owner',
+            'is_supplier',
         ]
         widgets = {
             'username': forms.TextInput(
@@ -98,6 +100,18 @@ class UserRegisterForm(forms.ModelForm):
                     'placeholder': 'ИНН физ. лица',
                 }
             ),
+            'is_shop_owner': forms.CheckboxInput(
+                attrs={
+                    'class': '',
+                    'name': 'is_shop_owner',
+                }
+            ),
+            'is_supplier': forms.CheckboxInput(
+                attrs={
+                    'class': '',
+                    'name': 'is_supplier',
+                }
+            )
         }
 
     def clean(self):

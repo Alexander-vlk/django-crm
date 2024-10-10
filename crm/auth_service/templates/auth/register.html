@@ -52,6 +52,16 @@
                     {{ form.password_2.label }}
                     {{ form.password_2 }}
                 </div>
+                <div class="flex">
+                    <div class="">
+                        <label for="is_shop_owner" class='mr-2'>Владелец магазина</label>
+                        {{ form.is_shop_owner }}
+                    </div>
+                    <div class="mx-4">
+                        <label for="is_supplier" class='mx-2'>Поставщик</label>
+                        {{ form.is_supplier }}
+                    </div>
+                </div>
                 <div class="mt-6 flex align-center">
                     <button 
                         class="px-4 py-1 text-white font-light tracking-wider bg-blue-800 rounded hover:bg-blue-600" 
