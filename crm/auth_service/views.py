@@ -2,7 +2,7 @@ from django.shortcuts import redirect
 from django.urls import reverse_lazy, reverse
 from django.views.decorators.http import require_POST
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import login, logout
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.mixins import UserPassesTestMixin
 from django.views.generic.edit import CreateView
@@ -31,9 +31,14 @@ class UserRegisterView(UserPassesTestMixin, CreateView):
     success_url = reverse_lazy('auth_service:login')
     
     def form_valid(self, form):
-        user = form.save()
-
-        login(self.request, user)
+        new_user = form.save()
+        new_user = authenticate(
+            self.request,
+            username=form.cleaned_data.get('username'),
+            password=form.cleaned_data.get('password1')
+            )
+        if new_user:
+            login(self.request, new_user)
         return super().form_valid(form)  
     
     def test_func(self):
