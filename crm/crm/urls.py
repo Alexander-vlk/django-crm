@@ -15,6 +15,7 @@ urlpatterns = [
     path('shop/', include('shop.urls')),
     path('order/', include('order.urls')),
     path('ordered_products/', include('ordered_products.urls')),
+    path('supplies/', include('supplies.urls')),
     path("__reload__/", include("django_browser_reload.urls")),
 ] + debug_toolbar_urls()
 

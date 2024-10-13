@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'shop.apps.ShopConfig',
     'order.apps.OrderConfig',
     'ordered_products.apps.OrderedProductsConfig',
+    'supplies.apps.SuppliesConfig',
 
     'tailwind',
     'theme',
