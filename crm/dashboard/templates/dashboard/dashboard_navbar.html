@@ -3,7 +3,7 @@
 
 {% block navbar %}
 <aside
-    class='container relative h-screen sm:max-w-sm bg-blue-600 text-white md:shadow-2xl'
+    class='container relative min-h-screen sm:max-w-80 bg-blue-600 text-white md:shadow-2xl'
 >
     <header
         class='border-b-2'
@@ -24,7 +24,7 @@
         </div>
         {% cache 10 short_profile_info request.user.id %}
             <div
-            class='mx-2 grid grid-cols-4 grid-rows-3 my-2 max-w-sm'
+            class='mx-2 grid grid-cols-4 grid-rows-3 my-2 max-w-sm gap-x-10'
             >
                 <div 
                     class="col-span-1 row-span-3 w-20 h-20 rounded-full border-2 overflow-hidden"
@@ -55,16 +55,16 @@
         {% endcache %}
     </header>
     <nav
-        class='text-3xl w-full my-5'
+        class='h-screen sm:h-full text-xl w-full'
     >
         <ul
             class='mx-4'
         >
             <li
-                class='flex my-4'
+                class='flex my-4 align-center'
             >
                 <div
-                    class='block w-10 h-10 bg-white mr-2 rounded'
+                    class='block w-7 h-7 bg-white mr-2 rounded'
                 >
 
                 </div>
@@ -76,10 +76,10 @@
                 </a>
             </li>
             <li
-                class='flex my-4'
+                class='flex my-4 align-center'
             >
                 <div
-                    class='block w-10 h-10 bg-white mr-2 rounded'
+                    class='block w-7 h-7 bg-white mr-2 rounded'
                 >
 
                 </div>
@@ -91,10 +91,10 @@
                 </a>
             </li>
             <li
-                class='flex my-4'
+                class='flex my-4 align-center'
             >
                 <div
-                    class='block w-10 h-10 bg-white mr-2 rounded'
+                    class='block w-7 h-7 bg-white mr-2 rounded'
                 >
 
                 </div>
@@ -106,10 +106,10 @@
                 </a>
             </li>
             <li
-                class='flex my-4'
+                class='flex my-4 align-center'
             >
                 <div
-                    class='block w-10 h-10 bg-white mr-2 rounded'
+                    class='block w-7 h-7 bg-white mr-2 rounded'
                 >
 
                 </div>
@@ -121,10 +121,10 @@
                 </a>
             </li>
             <li
-                class='flex my-4'
+                class='flex my-4 align-center'
             >
                 <div
-                    class='block w-10 h-10 bg-white mr-2 rounded'
+                    class='block w-7 h-7 bg-white mr-2 rounded'
                 >
 
                 </div>
@@ -136,10 +136,10 @@
                 </a>
             </li>
             <li
-                class='flex my-4'
+                class='flex my-4 align-center'
             >
                 <div
-                    class='block w-10 h-10 bg-white mr-2 rounded'
+                    class='block w-7 h-7 bg-white mr-2 rounded'
                 >
 
                 </div>
@@ -151,10 +151,10 @@
                 </a>
             </li>
             <li
-                class='flex my-4'
+                class='flex my-4 align-center'
             >
                 <div
-                    class='block w-10 h-10 bg-white mr-2 rounded'
+                    class='block w-7 h-7 bg-white mr-2 rounded'
                 >
 
                 </div>
@@ -166,10 +166,10 @@
                 </a>
             </li>
             <li
-                class='flex my-4'
+                class='flex my-4 align-center'
             >
                 <div
-                    class='block w-10 h-10 bg-white mr-2 rounded'
+                    class='block w-7 h-7 bg-white mr-2 rounded'
                 >
 
                 </div>
@@ -182,7 +182,7 @@
             </li>
             {% if request.user.is_staff %}
                 <li
-                    class='my-6'
+                    class='my-4'
                 >
                     <a 
                         href="/admin/"
