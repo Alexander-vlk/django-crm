@@ -23,6 +23,7 @@ INSTALLED_APPS = [
     'auth_service.apps.AuthServiceConfig',
     'app.apps.AppConfig',
     'dashboard.apps.DashboardConfig',
+    'product.apps.ProductConfig',
 
     'tailwind',
     'theme',
