@@ -1,0 +1,205 @@
+{% extends "base.html" %}
+{% load cache %}
+
+{% block navbar %}
+<aside
+    class='container relative min-h-screen sm:max-w-80 bg-blue-600 text-white md:shadow-2xl'
+>
+    <header
+        class='border-b-2'
+    >
+        <div
+            class="flex justify-between align-center p-4"
+        >
+            <h1
+                class='text-4xl'
+            >
+                CRM
+            </h1>
+            <div
+                class="block w-10 h-10 bg-white rounded"
+            >
+                
+            </div>
+        </div>
+        {% cache 10 short_profile_info request.user.id %}
+            <div
+            class='mx-2 grid grid-cols-4 grid-rows-3 my-2 max-w-sm gap-x-10'
+            >
+                <div 
+                    class="col-span-1 row-span-3 w-20 h-20 rounded-full border-2 overflow-hidden"
+                >
+                    <img 
+                        src="{{ request.user.profile_image.url }}"
+                        alt="profile image"
+                        class='w-full h-full object-cover'
+                    >
+                </div>
+                <h2
+                    class='col-span-3 row-span-1 text-xl'
+                >
+                    {{request.user.last_name}} {{request.user.first_name}}
+                </h2>
+                <p
+                    class='col-span-3 row-span-1 text-gray-300'
+                >
+                    @{{request.user.username}}
+                </p>
+                <a
+                    href=""
+                    class='col-span-3 row-span-1 underline'
+                >
+                    Редактировать профиль
+                </a>
+            </div>
+        {% endcache %}
+    </header>
+    <nav
+        class='h-screen sm:h-full text-xl w-full'
+    >
+        <ul
+            class='mx-4'
+        >
+            <li
+                class='flex my-4 align-center'
+            >
+                <div
+                    class='block w-7 h-7 bg-white mr-2 rounded'
+                >
+
+                </div>
+                <a
+                    href=""
+                    class=''
+                >
+                    Панель управления
+                </a>
+            </li>
+            <li
+                class='flex my-4 align-center'
+            >
+                <div
+                    class='block w-7 h-7 bg-white mr-2 rounded'
+                >
+
+                </div>
+                <a
+                    href=""
+                    class=''
+                >
+                    Новая запись
+                </a>
+            </li>
+            <li
+                class='flex my-4 align-center'
+            >
+                <div
+                    class='block w-7 h-7 bg-white mr-2 rounded'
+                >
+
+                </div>
+                <a
+                    href=""
+                    class=''
+                >
+                    Товары
+                </a>
+            </li>
+            <li
+                class='flex my-4 align-center'
+            >
+                <div
+                    class='block w-7 h-7 bg-white mr-2 rounded'
+                >
+
+                </div>
+                <a
+                    href=""
+                    class=''
+                >
+                    Поставщики
+                </a>
+            </li>
+            <li
+                class='flex my-4 align-center'
+            >
+                <div
+                    class='block w-7 h-7 bg-white mr-2 rounded'
+                >
+
+                </div>
+                <a
+                    href=""
+                    class=''
+                >
+                    Магазины
+                </a>
+            </li>
+            <li
+                class='flex my-4 align-center'
+            >
+                <div
+                    class='block w-7 h-7 bg-white mr-2 rounded'
+                >
+
+                </div>
+                <a
+                    href=""
+                    class=''
+                >
+                    Заказы
+                </a>
+            </li>
+            <li
+                class='flex my-4 align-center'
+            >
+                <div
+                    class='block w-7 h-7 bg-white mr-2 rounded'
+                >
+
+                </div>
+                <a
+                    href=""
+                    class=''
+                >
+                    Заказанные товары
+                </a>
+            </li>
+            <li
+                class='flex my-4 align-center'
+            >
+                <div
+                    class='block w-7 h-7 bg-white mr-2 rounded'
+                >
+
+                </div>
+                <a
+                    href=""
+                    class=''
+                >
+                    Поставки
+                </a>
+            </li>
+            {% if request.user.is_staff %}
+                <li
+                    class='my-4'
+                >
+                    <a 
+                        href="/admin/"
+                        class='bg-green-600 px-4 py-2 rounded shadow-lg'
+                    >
+                        Админ-панель
+                    </a>
+                </li>
+            {% endif %}
+        </ul>
+    </nav>
+    <footer
+        class='absolute bottom-0 bg-blue-700 w-full p-4'
+    >
+        <p>
+            Django CRM - 2024
+        </p>
+    </footer>
+</aside>
+{% endblock navbar %}
