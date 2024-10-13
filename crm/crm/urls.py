@@ -11,6 +11,7 @@ urlpatterns = [
     path('', include('app.urls')),
     path('dashboard/', include('dashboard.urls')),
     path('product/', include('product.urls')),
+    path('supplier/', include('supplier.urls')),
     path("__reload__/", include("django_browser_reload.urls")),
 ] + debug_toolbar_urls()
 
