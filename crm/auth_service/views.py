@@ -16,7 +16,7 @@ class UserLoginView(UserPassesTestMixin, LoginView):
 
     template_name = 'auth/login.html'
 
-    next_page = reverse_lazy('app:index')
+    next_page = reverse_lazy('dashboard:dashboard_index')
 
     def test_func(self):
         return not self.request.user.is_authenticated or self.request.user.is_superuser
